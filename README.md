@@ -21,6 +21,7 @@ Your app should now be running on [localhost:8080](http://localhost:8080/).
 ## Router Local
 
 Auth user Register and Login
+---
 1. http://localhost:8080/users/register 	(POST) 	(formKey: username,password(value 6 character),age,email)
 ![Image Register](https://github.com/Elang-Eka/Image-MyGram/blob/master/Auth/Register.jpg)
 2. http://localhost:8080/users/login 	(POST)	(formKey: email,password)
@@ -28,6 +29,7 @@ Auth user Register and Login
 
 
 User Router
+---
 1. http://localhost:8080/users 	(GET)
 ![Image Get User](https://github.com/Elang-Eka/Image-MyGram/blob/master/User/Get_User.jpg)
 2. http://localhost:8080/users 	(PUT) 	(formKey: username,email,age)
@@ -36,6 +38,7 @@ User Router
 ![Image Delete User](https://github.com/Elang-Eka/Image-MyGram/blob/master/User/Delete_User.jpg)
 
 Social Media Router
+---
 1. http://localhost:8080/socialmedias 			(GET)
 ![Image Get Social Media](https://github.com/Elang-Eka/Image-MyGram/blob/master/Social_Media/Get_Social_Media.jpg)
 2. http://localhost:8080/socialmedias 			(POST) 	(formKey: name,social_media_url)
@@ -46,6 +49,7 @@ Social Media Router
 ![Image Delete Social Media](https://github.com/Elang-Eka/Image-MyGram/blob/master/Social_Media/Delete_Social_Media.jpg)
 
 Photo Router
+---
 1. http://localhost:8080/photos 		(POST) 	(formKey: photo_url,title,caption)
 ![Image Create Photo](https://github.com/Elang-Eka/Image-MyGram/blob/master/Photo/Create_photo.jpg)
 2. http://localhost:8080/photos 		(GET)
@@ -56,6 +60,7 @@ Photo Router
 ![Image Delete Photo](https://github.com/Elang-Eka/Image-MyGram/blob/master/Photo/Delete_photo.jpg)
 
 Comment Router
+---
 1. http://localhost:8080/comments 			(POST) 	(formKey:message,photo_id)
 ![Image Create Comment](https://github.com/Elang-Eka/Image-MyGram/blob/master/Comment/Create_Comment.jpg)
 2. http://localhost:8080/comments/:photoId 	(GET)
