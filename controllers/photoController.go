@@ -142,19 +142,23 @@ func PhotoUpdate(c *gin.Context) {
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	contentType := helpers.GetContentType(c)
 	Photo := models.Photo{}
+	userID := uint(userData["id"].(float64))
 
 	file, err := c.FormFile("photo_url")
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println(file.Filename)
-	err = c.SaveUploadedFile(file, "assets/img/"+file.Filename)
+	idPhoto := strconv.Itoa(int(userID))
+	createTimeM := strconv.Itoa(Photo.CreatedAt.Minute())
+	createTimeD := strconv.Itoa(Photo.CreatedAt.Day())
+	createTimeH := strconv.Itoa(Photo.CreatedAt.Hour())
+	location := "assets/img/" + idPhoto + createTimeM + createTimeH + createTimeD + file.Filename
+	err = c.SaveUploadedFile(file, location)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	photoId, _ := strconv.Atoi(c.Param("photoId"))
-	userID := uint(userData["id"].(float64))
 
 	if contentType == appJSON {
 		c.ShouldBindJSON(&Photo)
@@ -164,7 +168,7 @@ func PhotoUpdate(c *gin.Context) {
 
 	Photo.User_Id = userID
 	Photo.ID = uint(photoId)
-	Photo.Photo_url = file.Filename
+	Photo.Photo_url = location
 
 	err = db.Model(&Photo).Where("id = ?", photoId).Find(&Photo).Error
 	if err != nil {
